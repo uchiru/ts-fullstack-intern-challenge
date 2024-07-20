@@ -1,0 +1,11 @@
+.header__menu{
+    display: flex;
+    align-items: center;
+    margin: 0 0 0 64px;
+}
+
+.header__menu-link{
+    padding: 1px 22px;
+    text-decoration: none;
+    color: white;
+}
