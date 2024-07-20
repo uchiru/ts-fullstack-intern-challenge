@@ -5,7 +5,17 @@
 }
 
 .header__menu-link{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    box-sizing: border-box;
     padding: 1px 22px;
     text-decoration: none;
     color: white;
+    opacity: .7;
+}
+
+.header__menu-link_current{
+    opacity: 1;
+    background-color: #1E88E5;
 }
