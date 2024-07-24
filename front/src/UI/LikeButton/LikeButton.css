@@ -11,4 +11,14 @@
     background-position: center;
     background-size: 40px 37px;
     background-repeat: no-repeat;
+    cursor: pointer;
+    visibility: hidden;
+}
+
+.like-button_visible{
+    visibility: visible;
+}
+
+.like-button_active {
+    background-image: url('./isLiked.svg');
 }

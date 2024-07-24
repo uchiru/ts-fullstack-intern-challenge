@@ -1,0 +1,7 @@
+.more-cats-button{
+    display: block;
+    margin: 0 auto 31px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
