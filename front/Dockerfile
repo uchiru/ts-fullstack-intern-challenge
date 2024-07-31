@@ -3,6 +3,7 @@ FROM node as vite-app
 WORKDIR /app/client
 COPY . .
 
+RUN npm install
 RUN npm ci
 RUN npm run build
 

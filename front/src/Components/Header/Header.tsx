@@ -1,5 +1,3 @@
-import { useState } from 'react';
-
 import './Header.css';
 import { HeaderMenu } from '../HeaderMenu/HeaderMenu';
 

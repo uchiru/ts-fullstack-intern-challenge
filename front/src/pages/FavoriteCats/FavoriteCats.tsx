@@ -1,6 +1,4 @@
-import { useState } from 'react';
 import './FavoriteCats.css';
-
 
 export function FavoriteCats() {
 

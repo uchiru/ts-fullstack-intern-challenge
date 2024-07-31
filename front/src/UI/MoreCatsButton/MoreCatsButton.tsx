@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import './MoreCatsButton.css';
 import { MoreCatsButtonProps } from './MoreCatsButtonProps';
 

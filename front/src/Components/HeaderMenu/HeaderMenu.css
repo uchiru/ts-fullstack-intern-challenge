@@ -13,6 +13,9 @@
     text-decoration: none;
     color: white;
     opacity: .7;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
 .header__menu-link_current{

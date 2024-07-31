@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useState, useMemo } from 'react';
 import './Main.css';
 import { CatCard } from '../../Components/CatCard/CatCard';
 import { MoreCatsButton } from '../../UI/MoreCatsButton/MoreCatsButton';
@@ -21,6 +21,7 @@ export function Main() {
       let res = await getCats(cardsLimit);
       if(res.ok) {
         const data = await res.json();
+        console.log(data)
         setCatsCards(data);
       } else {
         throw new Error(res)
@@ -36,12 +37,13 @@ export function Main() {
 
   return (
   <main className='main'>
-
+    
   <ul className='grid-container list-style'>
     {catsCards?.map(cat => (
       <CatCard
       key={cat.id}
       url={cat.url}
+      id = {cat.id}
       />))}
   </ul>
 

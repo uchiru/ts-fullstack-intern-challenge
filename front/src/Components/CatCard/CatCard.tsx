@@ -1,10 +1,9 @@
 import { useState } from 'react';
 import './CatCard.css';
-import testCat from './image3.png';
 import { LikeButton } from '../../UI/LikeButton/LikeButton';
 import { CatInterface } from '../../Types/CatInterface/CatInterface';
 
-export function CatCard({url}: Partial<CatInterface>) {
+export function CatCard({ id, url }: CatInterface) {
   
   const [likeVisibility, setLikeVisibility] = useState(false);
 
@@ -19,7 +18,7 @@ export function CatCard({url}: Partial<CatInterface>) {
   return (
   <li className='cat-card' onMouseEnter={likeIsVisible} onMouseLeave={likeIsUnvisible}>
     <img src={url} className='cat-card__image'/>
-    <LikeButton visibility = {likeVisibility}/>
+    <LikeButton visibility = {likeVisibility} id={id} url={url}/>
   </li>
   )
 }

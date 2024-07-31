@@ -28,6 +28,8 @@ services:
     depends_on:
       cat-pinterest-api-pg:
         condition: service_healthy
+    ports:
+    - "3000:3000"
 
   cat-pinterest-front:
     container_name: cat-pinterest-front
@@ -48,6 +50,8 @@ services:
       POSTGRES_PASSWORD: 1
       POSTGRES_USER: postgres
       POSTGRES_DB: support_lk_db
+    ports:
+    - "5432:5432"
     #      PG_DATA: /var/lib/postgresql/data
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U postgres" ]
