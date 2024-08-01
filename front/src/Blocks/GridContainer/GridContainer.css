@@ -1,8 +1,8 @@
 .grid-container {
     display: grid;
-    justify-content: space-between;
+    justify-content: start;
     box-sizing: border-box;
     grid-template-columns: repeat(auto-fit, 225px);
     gap: 48px;
-    margin: 62px;
+    margin: 62px auto;
 }

@@ -1,28 +1,44 @@
-import { useState } from 'react';
+import { useMemo, useState } from 'react';
 import './LikeButton.css';
 import { LikeButtonPropsInterface } from './LikeButtonPropsInterface';
-import { postLike } from '../../utils/likesApi/likesApi';
+import { useAppDispatch, useAppSelector } from '../../store/hooks';
+import { postUserLike, deleteUserLike } from '../../store/Likes/likesSlice';
 
 export function LikeButton({ visibility, id, url}: LikeButtonPropsInterface) {
 
   const [ isLiked, setIsLiked ] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const likes = useAppSelector(state => state.likes.value);
 
   async function toggleLike() {
     try {
       if(!isLiked) {
         setIsLiked(true);
         let token = localStorage.getItem('jwt');
-        let data = token && await postLike(id, url, token);
-        console.log(data);
+        token && await dispatch(postUserLike({catId:id, url, token}));
       } else {
+        let token = localStorage.getItem('jwt');
+        token && await dispatch(deleteUserLike({catId:id, token}));
         setIsLiked(false);
-
       }
     }
     catch(err:any) {
       console.error(err.message)
     }
   }
+
+  function checkIsLiked(){
+    likes.forEach((cat) => {
+      if(cat.cat_id === id){
+        setIsLiked(true)
+      }
+    })
+  }
+
+  useMemo(() => {
+    checkIsLiked();
+  }, [likes])
 
   return (
   <button className={[

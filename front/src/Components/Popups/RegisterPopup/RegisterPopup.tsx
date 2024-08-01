@@ -1,7 +1,7 @@
 import { useForm } from "../../../hooks/useForm/useForm"
 import { RegisterPopupProps } from "./RegisterPopupProps";
 import './RegisterPopup.css';
-import { registerUser } from "../../../utils/catsApi/userApi/userApi";
+import { registerUser } from "../../../utils/userApi/userApi";
 import { useState } from "react";
 
 export function RegisterPopup({ isOpen, setIsOpen }: RegisterPopupProps) {
@@ -20,7 +20,6 @@ export function RegisterPopup({ isOpen, setIsOpen }: RegisterPopupProps) {
         if(res.status === 201) {
           setServerMessage('Вы успешно зарегистрированы, необходимо выполнить вход')
         }
-        console.log(res);
       }
       catch(err:any) {
         setServerMessage(err.message);
@@ -53,6 +52,7 @@ export function RegisterPopup({ isOpen, setIsOpen }: RegisterPopupProps) {
         onChange={handleChange}
         required={true}
         maxLength={30}
+        type="password"
       ></input>
       <button
       className="registration__submit-button"

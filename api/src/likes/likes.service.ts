@@ -37,9 +37,10 @@ export class LikesService {
       }
       
       async remove(cat_id: string, user_id: number) {
-        return await this.likesRepository.delete({
+        await this.likesRepository.delete({
           user_id,
           cat_id
         })
+        return { user_id, cat_id };
       }
 }

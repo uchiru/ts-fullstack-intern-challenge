@@ -21,14 +21,13 @@ export function Main() {
       let res = await getCats(cardsLimit);
       if(res.ok) {
         const data = await res.json();
-        console.log(data)
         setCatsCards(data);
       } else {
         throw new Error(res)
       }
     } 
     catch(err:any) {
-      console.log(err.message)
+      console.error(err.message)
     }
     finally {
       setIsLoading(false);

@@ -1,6 +1,36 @@
 const BASE_URL = 'http://localhost:3000';
 
-export async function postLike(catId:string, url: string, token: string) {
+export interface LikesApiInterface {
+    url?: string
+    catId: string
+    token: string
+  }
+
+export async function getLikes(token: string) {
+    try{
+        let res = await fetch(`${BASE_URL}/likes`, {
+            method: 'GET', 
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: `Bearer ${token}`
+            },
+
+        })
+        if(res.status === 401) {
+            throw new Error('Пользователь не авторизован');
+        }
+        if(!res.ok) {
+            throw new Error('Произошла ошибка');
+        }
+        return res;
+    }
+    catch(err:any) {
+        return err;
+    }
+
+}
+
+export async function postLike({catId, url, token}: LikesApiInterface) {
     try{
         let res = await fetch(`${BASE_URL}/likes`, {
             method: 'POST', 
@@ -21,15 +51,15 @@ export async function postLike(catId:string, url: string, token: string) {
         }
         return res;
     }
-    catch(err) {
+    catch(err:any) {
         return err;
     }
 
 }
 
-export async function deleteLike(id:string, token: string) {
+export async function deleteLike({catId, token}: LikesApiInterface) {
     try{
-        let res = await fetch(`${BASE_URL}/likes/${id}`, {
+        let res = await fetch(`${BASE_URL}/likes/${catId}`, {
             method: 'DELETE', 
             headers: {
                 'Content-Type': 'application/json',
@@ -44,7 +74,7 @@ export async function deleteLike(id:string, token: string) {
         }
         return res;
     }
-    catch(err) {
+    catch(err: any) {
         return err;
     }
 
